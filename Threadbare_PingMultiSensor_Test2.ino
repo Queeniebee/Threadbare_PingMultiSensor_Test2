@@ -9,7 +9,7 @@
 
 // For Both
 #define MAX_DISTANCE 500 //in cm
-#define PING_INTERVAL 5//not sure if it should be in micro or milliseconds, this is millis
+#define PING_INTERVAL 5  //not sure if it should be in micro or milliseconds, this is millis
 #define NUM_SENSORS  2
 
 unsigned long pingTimes[NUM_SENSORS];         // Holds the times when the next ping should happen for each sensor.
@@ -21,15 +21,6 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
 void setup() {
   Serial.begin(9600);
-
-//  pingTimes[0] = millis() + 10;   // First ping starts at 75ms, gives time for the Arduino to chill before starting.
-//
-//  pingTimes[0] = pingTimes[0] + PING_INTERVAL; // Set the starting time for each sensor.
-//  pingTimes[1] = pingTimes[1] + PING_INTERVAL;
-
-  //    for (int i = 1; i < NUM_SENSORS; i++){   
-  //      pingTimes[i] = pingTimes[i - 1] + PING_INTERVAL;
-  //    }
 }
 
 void loop() {
@@ -68,28 +59,4 @@ void loop() {
 long microsecondsToCentimeters(long microseconds) {
   return microseconds / 29 / 2;
 }
-
-/* Not sure if I should try to implement an array and for loop reading the values from the two diff sensors
-// If ping received, set the sensor distance to array.
-void echoCheck() { 
-  if (sonar[currentSensor].check_timer())
-    distanceStore[currentSensor] = sonar[currentSensor].ping_result / US_ROUNDTRIP_CM;
-}
-
-// Sensor ping cycle complete, so printing the results.
-void oneSensorCycle() {    
-  for (int i = 0; i < NUM_SENSORS; i++) {
-    Serial.print(i);
-    Serial.print(" = ");
-    Serial.print(distanceStore[i]);
-    Serial.print("cm");
-  }
-  Serial.println();
-}
-*/
-
-
-
-
-
 
